@@ -1,0 +1,18 @@
+{
+  "npmScope": "dxc-poc",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "dxc-ptw-ui-e2e": {
+      "tags": []
+    },
+    "dxc-ptw-ui": {
+      "tags": []
+    }
+  }
+}
