@@ -1,39 +1,41 @@
 {
   "version": 1,
   "projects": {
-    "dxc-ptw-ui": {
+    "test-poc-ui": {
       "projectType": "application",
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
         }
       },
-      "root": "apps/dxc-ptw-ui",
-      "sourceRoot": "apps/dxc-ptw-ui/src",
-      "prefix": "dxc-poc",
+      "root": "apps/test-poc-ui",
+      "sourceRoot": "apps/test-poc-ui/src",
+      "prefix": "test-poc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/dxc-ptw-ui",
-            "index": "apps/dxc-ptw-ui/src/index.html",
-            "main": "apps/dxc-ptw-ui/src/main.ts",
-            "polyfills": "apps/dxc-ptw-ui/src/polyfills.ts",
-            "tsConfig": "apps/dxc-ptw-ui/tsconfig.app.json",
+            "outputPath": "dist/apps/test-poc-ui",
+            "index": "apps/test-poc-ui/src/index.html",
+            "main": "apps/test-poc-ui/src/main.ts",
+            "polyfills": "apps/test-poc-ui/src/polyfills.ts",
+            "tsConfig": "apps/test-poc-ui/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "apps/dxc-ptw-ui/src/favicon.ico",
-              "apps/dxc-ptw-ui/src/assets"
+              "apps/test-poc-ui/src/favicon.ico",
+              "apps/test-poc-ui/src/assets"
             ],
-            "styles": ["apps/dxc-ptw-ui/src/styles.scss"],
+            "styles": [
+              "apps/test-poc-ui/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/dxc-ptw-ui/src/environments/environment.ts",
-                  "with": "apps/dxc-ptw-ui/src/environments/environment.prod.ts"
+                  "replace": "apps/test-poc-ui/src/environments/environment.ts",
+                  "with": "apps/test-poc-ui/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -58,63 +60,214 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dxc-ptw-ui:build"
+            "browserTarget": "test-poc-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dxc-ptw-ui:build:production"
+              "browserTarget": "test-poc-ui:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dxc-ptw-ui:build"
+            "browserTarget": "test-poc-ui:build"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/dxc-ptw-ui/tsconfig.app.json",
-              "apps/dxc-ptw-ui/tsconfig.spec.json"
+              "apps/test-poc-ui/tsconfig.app.json",
+              "apps/test-poc-ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/dxc-ptw-ui/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/test-poc-ui/**"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/dxc-ptw-ui/jest.config.js",
-            "tsConfig": "apps/dxc-ptw-ui/tsconfig.spec.json",
-            "setupFile": "apps/dxc-ptw-ui/src/test-setup.ts"
+            "jestConfig": "apps/test-poc-ui/jest.config.js",
+            "tsConfig": "apps/test-poc-ui/tsconfig.spec.json",
+            "setupFile": "apps/test-poc-ui/src/test-setup.ts"
           }
         }
       }
     },
-    "dxc-ptw-ui-e2e": {
-      "root": "apps/dxc-ptw-ui-e2e",
-      "sourceRoot": "apps/dxc-ptw-ui-e2e/src",
+    "test-poc-ui-e2e": {
+      "root": "apps/test-poc-ui-e2e",
+      "sourceRoot": "apps/test-poc-ui-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/dxc-ptw-ui-e2e/cypress.json",
-            "tsConfig": "apps/dxc-ptw-ui-e2e/tsconfig.e2e.json",
-            "devServerTarget": "dxc-ptw-ui:serve"
+            "cypressConfig": "apps/test-poc-ui-e2e/cypress.json",
+            "tsConfig": "apps/test-poc-ui-e2e/tsconfig.e2e.json",
+            "devServerTarget": "test-poc-ui:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "dxc-ptw-ui:serve:production"
+              "devServerTarget": "test-poc-ui:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/dxc-ptw-ui-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/dxc-ptw-ui-e2e/**"]
+            "tsConfig": [
+              "apps/test-poc-ui-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/test-poc-ui-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "libs-data": {
+      "root": "libs/libs/data",
+      "sourceRoot": "libs/libs/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/libs/data/tsconfig.lib.json",
+              "libs/libs/data/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/libs/data/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/libs/data/jest.config.js",
+            "tsConfig": "libs/libs/data/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "data-data": {
+      "root": "libs/data/data",
+      "sourceRoot": "libs/data/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/data/data/tsconfig.lib.json",
+              "libs/data/data/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/data/data/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/data/data/jest.config.js",
+            "tsConfig": "libs/data/data/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "data": {
+      "root": "libs/data",
+      "sourceRoot": "libs/data/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/data/tsconfig.lib.json",
+              "libs/data/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/data/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/data/jest.config.js",
+            "tsConfig": "libs/data/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "test-poc-backend": {
+      "root": "apps/test-poc-backend",
+      "sourceRoot": "apps/test-poc-backend/src",
+      "projectType": "application",
+      "prefix": "test-poc-backend",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/test-poc-backend",
+            "main": "apps/test-poc-backend/src/main.ts",
+            "tsConfig": "apps/test-poc-backend/tsconfig.app.json",
+            "assets": [
+              "apps/test-poc-backend/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/test-poc-backend/src/environments/environment.ts",
+                  "with": "apps/test-poc-backend/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "test-poc-backend:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/test-poc-backend/tsconfig.app.json",
+              "apps/test-poc-backend/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/test-poc-backend/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/test-poc-backend/jest.config.js",
+            "tsConfig": "apps/test-poc-backend/tsconfig.spec.json"
           }
         }
       }
@@ -132,5 +285,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "dxc-ptw-ui"
+  "defaultProject": "test-poc-ui"
 }

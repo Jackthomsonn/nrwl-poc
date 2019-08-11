@@ -1,5 +1,5 @@
 {
-  "npmScope": "dxc-poc",
+  "npmScope": "test-poc",
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -8,10 +8,22 @@
     "nx.json": "*"
   },
   "projects": {
-    "dxc-ptw-ui-e2e": {
+    "test-poc-ui-e2e": {
       "tags": []
     },
-    "dxc-ptw-ui": {
+    "test-poc-ui": {
+      "tags": []
+    },
+    "libs-data": {
+      "tags": []
+    },
+    "data-data": {
+      "tags": []
+    },
+    "data": {
+      "tags": []
+    },
+    "test-poc-backend": {
       "tags": []
     }
   }

@@ -1,9 +1,9 @@
 import { getGreeting } from '../support/app.po';
 
-describe('dxc-ptw-ui', () => {
+describe('test-poc-ui', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
-    getGreeting().contains('Welcome to dxc-ptw-ui!');
+    getGreeting().contains('Welcome to test-poc-ui!');
   });
 });
